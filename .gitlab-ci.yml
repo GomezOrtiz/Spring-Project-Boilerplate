@@ -29,7 +29,6 @@ test:
     POSTGRES_USER: boilerplate
     POSTGRES_PASSWORD: b0il3rpl4t3
   script:
-    - mvn flyway:clean
     - mvn clean test -Drunner
   artifacts:
     when: always
