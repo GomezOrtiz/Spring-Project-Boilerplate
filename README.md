@@ -45,5 +45,7 @@
 
 
 8. Borra este archivo (README.md) y renombra el archivo ACTUAL_README.md a README.md. Modifica el título y la descripción del proyecto.
+
+9. Borra la carpeta .git de la raíz del proyecto y ejecuta el comando "git init" en tu terminal para crear un nuevo repositorio local (si no lo haces, seguirá sobre el repositorio de este boilerplate). Ya puedes asociar el remoto que prefieras (por ejemplo, un proyecto de Gitlab)
 	
 	
