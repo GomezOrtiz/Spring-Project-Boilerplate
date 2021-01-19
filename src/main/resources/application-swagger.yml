@@ -1,0 +1,7 @@
+# DOCS:
+springdoc:
+  version: @springdoc.version@
+  swagger-ui:
+    path: /api/spec
+    groups-order: DESC
+    operationsSorter: method

@@ -1,0 +1,5 @@
+spring:
+  # LOGS
+  output:
+    ansi:
+      enabled: ALWAYS

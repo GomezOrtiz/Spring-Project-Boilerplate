@@ -1,0 +1,71 @@
+image: maven:3.6.3-jdk-11
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository/
+
+stages:
+  - setup
+  - test
+  - coverage
+  - publish
+
+setup:
+  stage: setup
+  script:
+    - mvn -version
+    - java -version
+    - echo $MAVEN_OPTS
+
+test:
+  stage: test
+  services:
+    - name: postgres:12-alpine
+  variables:
+    POSTGRES_DB: vacaciones
+    POSTGRES_USER: vacaciones
+    POSTGRES_PASSWORD: v4c4c10n3s
+  script:
+    - mvn flyway:clean
+    - mvn clean test -Drunner
+  artifacts:
+    when: always
+    paths:
+      - target
+    expire_in: 5 mins
+
+coverage:
+  stage: coverage
+  needs:
+    - test
+  allow_failure: true
+  script:
+    - mvn jacoco:report
+  artifacts:
+    when: always
+    paths:
+      - target/site/jacoco
+    expire_in: 30 days
+  only:
+    - develop
+  except:
+    - tags
+
+pages:
+  stage: publish
+  needs:
+    - coverage
+  allow_failure: true
+  script:
+    - mkdir -p public/coverage
+    - cp -r target/site/jacoco public/coverage
+  artifacts:
+    paths:
+      - public
+  only:
+    - develop
+  except:
+    - tags
