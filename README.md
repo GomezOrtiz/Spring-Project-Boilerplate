@@ -16,17 +16,18 @@
     ```src/main/java/es.nextdigital.springprojectboilerplate```
     ```src/test/java/es.nextdigital.springprojectboilerplate```
 
+3. Renombra las clases principales del proyecto, SpringBootBoilerplateApplication y SpringBootBoilerplateApplicationTests.
 
-3. Modifica el BASE_PACKAGE en BaseArchTest.java en base al nuevo nombre que hayas elegido en el paso anterior.
-
-
-4. Modifica la información sobre el proyecto en SwaggerConfig.java
+4. Modifica el BASE_PACKAGE en BaseArchTest.java en base al nuevo nombre que hayas elegido en el paso anterior.
 
 
-5. Comprueba si hay versiones más recientes de las dependencias que se especifican en el pom.xml y decide si te interesa actualizarlas. De ser así, cambia el número de versión en "properties".
+5. Modifica la información sobre el proyecto en SwaggerConfig.java
 
 
-6. Modifica la información sobre la base de datos en todos los sitios donde se utiliza:
+6. Comprueba si hay versiones más recientes de las dependencias que se especifican en el pom.xml y decide si te interesa actualizarlas. De ser así, cambia el número de versión en "properties".
+
+
+7. Modifica la información sobre la base de datos en todos los sitios donde se utiliza:
 
 - En el Makefile, en el comando que levanta el contenedor de Postgres de la base de datos de dev ("start-db").
   
@@ -43,6 +44,6 @@
 - En application-runner.yml. Deberás usar los mismos datos que en el gitlab-ci.yml.
 
 
-7. Borra este archivo (README.md) y renombra el archivo ACTUAL_README.md a README.md. Modifica el título y la descripción del proyecto.
+8. Borra este archivo (README.md) y renombra el archivo ACTUAL_README.md a README.md. Modifica el título y la descripción del proyecto.
 	
 	
