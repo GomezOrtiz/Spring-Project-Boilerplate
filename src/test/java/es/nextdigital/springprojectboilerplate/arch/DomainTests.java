@@ -19,6 +19,7 @@ public class DomainTests extends BaseArchTest {
             classes()
                     .that().areAnnotatedWith(Entity.class)
                     .or().resideInAPackage(DOMAIN_PACKAGE)
+                    .and().haveSimpleNameNotEndingWith("Builder")
                     .should().haveModifier(FINAL)
                     .orShould().haveModifier(ABSTRACT);
 
@@ -28,6 +29,7 @@ public class DomainTests extends BaseArchTest {
                     .that().areDeclaredInClassesThat().areAnnotatedWith(Entity.class)
                     .or().areDeclaredInClassesThat().resideInAPackage(DOMAIN_PACKAGE)
                     .and().areDeclaredInClassesThat().areNotEnums()
+                    .and().areDeclaredInClassesThat().haveSimpleNameNotEndingWith("Builder")
                     .and().areDeclaredInClassesThat().doNotHaveSimpleName("Auditable")
                     .should().beFinal()
                     .andShould().bePrivate();
