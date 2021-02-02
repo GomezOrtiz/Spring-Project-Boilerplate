@@ -25,11 +25,21 @@ To clean the dockerized Postgres database we use for dev environment, run the fo
 
 ```make clean-db```
 
-#### API SPEC AND POSTMAN COLLECTION
+#### API SPEC
 
 While the app is up and running, Swagger API docs are available in the following URL:
 
 http://localhost:8080/api/spec
+
+#### ACCESS DATABASE DURING TESTS EXECUTION
+
+A Postgres database container is run every time an integration test is executed (but only a unique container is run if you run several integration tests at the same time). To access that database during test execution, an Adminer container is also run. The connection details change with every execution (because port is randomly assigned by TestContainers), so the connection details are logged with each execution for convenience. This is what you should be looking for:
+
+```
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Postgres 12 test database can be accessed via Adminer in http://localhost:XXXXX with HOST db, DATABASE test, USERNAME test and PASSWORD test
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+```
 
 ## CI / CD
 

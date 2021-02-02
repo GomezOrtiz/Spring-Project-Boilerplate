@@ -16,7 +16,9 @@
     ```src/main/java/es.nextdigital.springprojectboilerplate```
     ```src/test/java/es.nextdigital.springprojectboilerplate```
 
+
 3. Renombra las clases principales del proyecto, SpringBootBoilerplateApplication y SpringBootBoilerplateApplicationTests.
+
 
 4. Modifica el BASE_PACKAGE en BaseArchTest.java en base al nuevo nombre que hayas elegido en el paso anterior.
 
@@ -48,5 +50,8 @@
 
 
 9. Borra la carpeta .git de la raíz del proyecto y ejecuta el comando "git init" en tu terminal para crear un nuevo repositorio local (si no lo haces, seguirá sobre el repositorio de este boilerplate). Ya puedes asociar el remoto que prefieras (por ejemplo, un proyecto de Gitlab)
+
+
+10. Recuerda borrar los archivos .gitkeep a medida que vayas introduciendo contenido en las carpetas que los contienen. Solo están ahí para poder subir carpetas vacías al repositorio.
 	
 	

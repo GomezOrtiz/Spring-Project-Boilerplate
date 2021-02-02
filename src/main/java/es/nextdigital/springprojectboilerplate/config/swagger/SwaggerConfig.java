@@ -28,6 +28,7 @@ public class SwaggerConfig {
                                 .title("Spring Project Boilerplate API")
                                 .description(
                                         "Next Digital Hub - Spring Project Boilerplate - Endpoints")
+                                .version("v1")
                 );
     }
 
