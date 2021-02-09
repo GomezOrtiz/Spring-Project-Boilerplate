@@ -6,11 +6,20 @@ import com.tngtech.archunit.junit.ArchTest;
 import com.tngtech.archunit.lang.ArchRule;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import static com.tngtech.archunit.core.domain.JavaModifier.ABSTRACT;
+import static com.tngtech.archunit.core.domain.JavaModifier.FINAL;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.noClasses;
 
 @AnalyzeClasses(packages = BaseArchTest.BASE_PACKAGE, importOptions = { ImportOption.DoNotIncludeTests.class })
 public class InfrastructureTests extends BaseArchTest {
+
+    @ArchTest
+    static final ArchRule infrastructure_classes_should_be_abstract_or_final =
+            classes()
+                    .that().resideInAPackage(INFRASTRUCTURE_PACKAGE)
+                    .should().haveModifier(FINAL)
+                    .orShould().haveModifier(ABSTRACT);
 
     @ArchTest
     static final ArchRule infrastructure_should_only_be_accessed_from_application_services =

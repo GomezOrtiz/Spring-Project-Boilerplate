@@ -42,16 +42,16 @@ public class TestClassesTests extends BaseArchTest {
                     .should().bePrivate();
 
     @ArchTest
-    static final ArchRule test_fields_that_are_not_static_should_be_private =
+    static final ArchRule test_fields_that_are_not_static_should_be_private_or_protected =
             fields()
                     .that().areDeclaredInClassesThat().areAnnotatedWith(SpringBootTest.class)
                     .or().areDeclaredInClassesThat().haveSimpleNameEndingWith("Tests")
-                    .and().areNotDeclaredIn(BaseIntegrationTest.class)
                     .and().areNotStatic()
-                    .should().bePrivate();
+                    .should().bePrivate()
+                    .orShould().beProtected();
 
     @ArchTest
-    static final ArchRule mothers_should_be_suffixed_except_disabled_writers =
+    static final ArchRule mothers_and_writers_should_be_suffixed =
             classes()
                     .that().resideInAPackage(MOTHER_PACKAGE)
                     .should().haveSimpleNameEndingWith("Mother")

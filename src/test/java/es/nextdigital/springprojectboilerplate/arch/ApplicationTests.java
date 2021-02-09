@@ -17,7 +17,6 @@ public class ApplicationTests extends BaseArchTest {
         classes()
                 .that().areAnnotatedWith(Service.class)
                 .and().resideInAPackage(APPLICATION_PACKAGE)
-                .and().resideOutsideOfPackage("..dto..")
                 .should().onlyBeAccessed().byAnyPackage(APPLICATION_PACKAGE, REST_PACKAGE);
 
     @ArchTest
@@ -39,7 +38,6 @@ public class ApplicationTests extends BaseArchTest {
     static final ArchRule dtos_should_be_placed_in_application =
             classes()
                     .that().haveSimpleNameEndingWith("DTO")
-                    .or().haveSimpleNameEndingWith("Page")
                     .or().haveSimpleNameEndingWith("Request")
                     .or().haveSimpleNameEndingWith("Response")
                     .should().resideInAPackage(APPLICATION_PACKAGE);
@@ -48,5 +46,5 @@ public class ApplicationTests extends BaseArchTest {
     static final ArchRule utils_should_be_placed_in_application =
             classes()
                     .that().haveSimpleNameEndingWith("Utils")
-                    .should().resideInAPackage(APPLICATION_PACKAGE);
+                    .should().resideInAnyPackage(APPLICATION_PACKAGE, INFRASTRUCTURE_PACKAGE);
 }

@@ -20,8 +20,7 @@ public class NamingConventionTests extends BaseArchTest {
     static final ArchRule application_services_should_be_in_the_right_package =
             classes()
                     .that().areAnnotatedWith(Service.class)
-                    .should().resideInAPackage(APPLICATION_PACKAGE)
-                    .orShould().resideInAPackage(INTEGRATION_PACKAGE);
+                    .should().resideInAPackage(APPLICATION_PACKAGE);
 
     @ArchTest
     static final ArchRule application_services_should_not_be_suffixed =
@@ -32,21 +31,28 @@ public class NamingConventionTests extends BaseArchTest {
                     .andShould().haveSimpleNameNotEndingWith("ServiceImpl");
 
     @ArchTest
-    static final ArchRule integration_services_should_not_be_suffixed =
+    static final ArchRule repository_interfaces_should_be_in_the_right_package =
             classes()
-                    .that().areAnnotatedWith(Service.class)
-                    .or().resideInAPackage(INTEGRATION_PACKAGE)
-                    .should().haveSimpleNameNotEndingWith("Integration");
+                    .that().haveSimpleNameEndingWith("Repository").and().areInterfaces()
+                    .and().areNotAssignableTo(JpaRepository.class)
+                    .should().resideInAPackage(DOMAIN_PACKAGE);
 
     @ArchTest
-    static final ArchRule repositories_should_be_in_the_right_package =
+    static final ArchRule repositories_in_domain_package_should_be_interfaces =
             classes()
-                    .that().haveSimpleNameEndingWith("Repository")
+                    .that().haveSimpleNameEndingWith("Repository").and().resideInAPackage(DOMAIN_PACKAGE)
+                    .should().notBeAssignableTo(JpaRepository.class)
+                    .andShould().beInterfaces();
+
+    @ArchTest
+    static final ArchRule repository_implementations_should_be_in_the_right_package =
+            classes()
+                    .that().haveSimpleNameEndingWith("Repository").and().areNotInterfaces()
                     .or().areAssignableTo(JpaRepository.class)
                     .should().resideInAPackage(INFRASTRUCTURE_PACKAGE);
 
     @ArchTest
-    static final ArchRule repositories_should_be_suffixed =
+    static final ArchRule jpa_repository_implementations_should_be_suffixed =
             classes()
                     .that().resideInAPackage(INFRASTRUCTURE_PACKAGE)
                     .and().areAssignableTo(JpaRepository.class)

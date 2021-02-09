@@ -35,13 +35,6 @@ public class DomainTests extends BaseArchTest {
                     .andShould().bePrivate();
 
     @ArchTest
-    static final ArchRule domain_classes_should_only_be_accessed_by_application_services =
-            classes()
-                    .that().areAnnotatedWith(Entity.class)
-                    .or().resideInAPackage(DOMAIN_PACKAGE)
-                    .should().onlyBeAccessed().byAnyPackage(DOMAIN_PACKAGE, APPLICATION_PACKAGE, INTEGRATION_PACKAGE);
-
-    @ArchTest
     static final ArchRule domain_should_not_depend_on_any_other_layer =
             noClasses()
                     .that().areAnnotatedWith(Entity.class)
