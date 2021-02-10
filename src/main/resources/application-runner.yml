@@ -9,3 +9,8 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
+
+# LOG LEVELS
+logging:
+  level:
+    ROOT: WARN

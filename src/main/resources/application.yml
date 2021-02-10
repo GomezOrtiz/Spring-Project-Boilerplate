@@ -1,5 +1,5 @@
 spring:
-  # LOGS
+  # ANSI IN LOGS
   output:
     ansi:
       enabled: ALWAYS

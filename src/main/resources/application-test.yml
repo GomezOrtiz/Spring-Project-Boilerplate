@@ -1,5 +1,11 @@
 spring:
-  # LOGS
+  # ANSI IN LOGS
   output:
     ansi:
       enabled: ALWAYS
+
+# LOG LEVELS
+logging:
+  level:
+    ROOT: INFO
+    es.nextdigital: DEBUG
