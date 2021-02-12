@@ -13,7 +13,6 @@ public final class ExceptionConstants {
     public static final String CONSTRAINT_VIOLATION = "Constraint violation";
     public static final String ARGUMENT_NOT_VALID = "Method argument not valid";
     public static final String ID_REQUIRED = "Id is required";
-    public static final String ID_NOT_VALID = "Id %s is not a valid numeric value";
 
     // UUID UTILS
     public static final String UUID_NOT_VALID = "%s is not a valid UUID";
