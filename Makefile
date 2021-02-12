@@ -1,20 +1,38 @@
-run:
+run: start-db
 	@./mvnw spring-boot:run
+
+start: start-db
+	@docker-compose up -d --build app
+
+logs:
+	@docker-compose logs -f app
+
+stop:
+	@docker-compose down
+
+status:
+	@docker ps -a
+
+cleanup:
+	@docker rmi $$(docker images -f "dangling=true" -q)
 
 test:
 	@./mvnw clean test
+
+sonar: start-sonar
+	@mvn clean verify sonar:sonar
+
+start-sonar:
+	@docker-compose up -d sonar
+
+start-db:
+	@docker-compose up -d database adminer
+
+clean-db:
+	@./mvnw flyway:clean
 
 generate-schema:
 	@rm -rf schema.sql
 	@./mvnw spring-boot:run -Pdev,schema
 
-start-db:
-	@docker run --rm -d -p 5432:5432 \
-		-e POSTGRES_DB=boilerplate -e POSTGRES_USER=boilerplate -e POSTGRES_PASSWORD=b0il3rpl4t3 \
-		-v boilerplate-db-data:/var/lib/postgresql/data \
-		--name boilerplate_db postgres:12-alpine
-
-clean-db:
-	@./mvnw flyway:clean
-
-.PHONY: run test generate-schema start-db clean-db
+.PHONY: run start logs stop status cleanup test sonar start-sonar start-db clean-db generate-schema

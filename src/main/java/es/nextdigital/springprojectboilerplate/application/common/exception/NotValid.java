@@ -11,7 +11,7 @@ public class NotValid extends RuntimeException {
 
     private static final long serialVersionUID = -4764907039065280816L;
 
-    private List<String> errors;
+    private final List<String> errors;
 
     public NotValid(String message, Object... args) {
         super(String.format(message, args));

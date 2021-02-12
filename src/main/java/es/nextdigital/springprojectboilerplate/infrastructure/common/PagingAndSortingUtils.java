@@ -9,11 +9,19 @@ import org.springframework.data.domain.Sort;
 public final class PagingAndSortingUtils {
 
     public static Pageable toPageable(Pagination pagination, Sorting sorting) {
+
         Sort sort = sorting.isSorted()
                 ? Sort.by(Sort.Order.by(sorting.getSortBy()).with(Sort.Direction.fromString(sorting.getSortDirection().value())))
                 : Sort.unsorted();
-        return pagination.isPaginated()
-                ? PageRequest.of(pagination.getPageNum(), pagination.getPageSize(), sort)
-                : Pageable.unpaged();
+
+        if(pagination.isPaginated()) {
+            return sorting.isSorted()
+                    ? PageRequest.of(pagination.getPageNum(), pagination.getPageSize(), sort)
+                    : PageRequest.of(pagination.getPageNum(), pagination.getPageSize());
+        } else {
+            return sorting.isSorted()
+                    ? PageRequest.of(0, Integer.MAX_VALUE, sort)
+                    : Pageable.unpaged();
+        }
     }
 }

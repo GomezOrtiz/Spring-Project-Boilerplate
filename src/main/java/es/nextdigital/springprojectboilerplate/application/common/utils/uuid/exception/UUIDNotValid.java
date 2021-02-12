@@ -1,4 +1,4 @@
-package es.nextdigital.springprojectboilerplate.application.common.utils.uuid;
+package es.nextdigital.springprojectboilerplate.application.common.utils.uuid.exception;
 
 import es.nextdigital.springprojectboilerplate.application.common.exception.ExceptionConstants;
 import es.nextdigital.springprojectboilerplate.application.common.exception.NotValid;
@@ -7,7 +7,7 @@ import es.nextdigital.springprojectboilerplate.application.common.exception.NotV
  * Excepción para controlar errores producidos
  * por el envío de un valor de UUID inadecuado
  */
-public class UUIDNotValid extends NotValid {
+public final class UUIDNotValid extends NotValid {
 
     private static final long serialVersionUID = -6511818867026757228L;
 

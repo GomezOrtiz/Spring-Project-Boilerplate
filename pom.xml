@@ -24,6 +24,8 @@
 		<springdoc.version>1.2.32</springdoc.version>
 		<testcontainers.version>1.14.3</testcontainers.version>
 		<jacoco.version>0.8.6</jacoco.version>
+		<sonar-maven-plugin.version>3.8.0.2131</sonar-maven-plugin.version>
+		<maven-help-plugin.version>3.2.0</maven-help-plugin.version>
 
 		<!--PROFILE ACTIVATION: These remain empty unless the corresponding profile is active-->
 		<profile.schema />
@@ -32,6 +34,17 @@
 		<flyway.url />
 		<flyway.user />
 		<flyway.password />
+
+		<!--SONAR-->
+		<sonar.login>admin</sonar.login>
+		<sonar.password>b0il3rpl4t3</sonar.password>
+		<sonar.junit.reportPaths>target/surefire-reports</sonar.junit.reportPaths>
+		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+		<sonar.issue.ignore.multicriteria>S1118,S1710</sonar.issue.ignore.multicriteria>
+		<sonar.issue.ignore.multicriteria.S1118.ruleKey>java:S1118</sonar.issue.ignore.multicriteria.S1118.ruleKey>
+		<sonar.issue.ignore.multicriteria.S1118.resourceKey>src/main/java/**/*</sonar.issue.ignore.multicriteria.S1118.resourceKey>
+		<sonar.issue.ignore.multicriteria.S1710.ruleKey>java:S1710</sonar.issue.ignore.multicriteria.S1710.ruleKey>
+		<sonar.issue.ignore.multicriteria.S1710.resourceKey>src/main/java/**/*</sonar.issue.ignore.multicriteria.S1710.resourceKey>
 	</properties>
 
 	<dependencies>
@@ -129,6 +142,15 @@
 	</dependencies>
 
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${sonar-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -137,7 +159,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-help-plugin</artifactId>
-				<version>3.2.0</version>
+				<version>${maven-help-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>show-profiles</id>
@@ -180,9 +202,18 @@
 							<goal>check</goal>
 						</goals>
 						<configuration>
+							<excludes>
+								<exclude>**/ExceptionsHandler.*</exclude>
+								<exclude>**/ApiError.*</exclude>
+								<exclude>**/config/**</exclude>
+								<exclude>**/dto/**</exclude>
+								<exclude>**/mapper/**</exclude>
+								<exclude>**/exception/**</exclude>
+								<exclude>**/domain/common/pagination/**</exclude>
+							</excludes>
 							<rules>
 								<rule>
-									<element>PACKAGE</element>
+									<element>BUNDLE</element>
 									<limits>
 										<limit>
 											<counter>LINE</counter>

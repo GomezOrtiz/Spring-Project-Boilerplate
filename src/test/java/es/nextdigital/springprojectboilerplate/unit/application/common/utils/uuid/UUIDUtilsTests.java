@@ -2,13 +2,13 @@ package es.nextdigital.springprojectboilerplate.unit.application.common.utils.uu
 
 import es.nextdigital.springprojectboilerplate.BaseUnitTest;
 import es.nextdigital.springprojectboilerplate.application.common.exception.ExceptionConstants;
-import es.nextdigital.springprojectboilerplate.application.common.utils.uuid.UUIDNotValid;
+import es.nextdigital.springprojectboilerplate.application.common.utils.uuid.exception.UUIDNotValid;
 import es.nextdigital.springprojectboilerplate.application.common.utils.uuid.UUIDUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UUIDUtilsTests extends BaseUnitTest {
+class UUIDUtilsTests extends BaseUnitTest {
 
     @Test
     void should_parse_uuid_from_string() {

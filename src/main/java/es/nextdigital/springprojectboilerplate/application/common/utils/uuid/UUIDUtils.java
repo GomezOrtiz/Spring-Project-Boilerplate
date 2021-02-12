@@ -1,6 +1,7 @@
 package es.nextdigital.springprojectboilerplate.application.common.utils.uuid;
 
 import es.nextdigital.springprojectboilerplate.application.common.exception.ExceptionConstants;
+import es.nextdigital.springprojectboilerplate.application.common.utils.uuid.exception.UUIDNotValid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
 

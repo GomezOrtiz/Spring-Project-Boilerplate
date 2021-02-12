@@ -1,4 +1,4 @@
-package es.nextdigital.springprojectboilerplate.application.common.utils.date;
+package es.nextdigital.springprojectboilerplate.application.common.utils.date.exception;
 
 import es.nextdigital.springprojectboilerplate.application.common.exception.ExceptionConstants;
 import es.nextdigital.springprojectboilerplate.application.common.exception.NotValid;
@@ -9,7 +9,7 @@ import java.util.Locale;
  * Excepción para controlar errores producidos
  * por el envío de un valor de fecha inadecuado
  */
-public class DateNotValid extends NotValid {
+public final class DateNotValid extends NotValid {
 
     private static final long serialVersionUID = 7026665656000726581L;
 

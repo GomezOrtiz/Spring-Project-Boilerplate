@@ -45,3 +45,6 @@ gcp_*_config.json
 
 ## Cloud SQL Proxy
 cloud_sql_proxy
+
+## Sonarqube
+sonarqube

@@ -2,7 +2,7 @@ package es.nextdigital.springprojectboilerplate.unit.application.common.utils.da
 
 import es.nextdigital.springprojectboilerplate.BaseUnitTest;
 import es.nextdigital.springprojectboilerplate.application.common.exception.ExceptionConstants;
-import es.nextdigital.springprojectboilerplate.application.common.utils.date.DateNotValid;
+import es.nextdigital.springprojectboilerplate.application.common.utils.date.exception.DateNotValid;
 import es.nextdigital.springprojectboilerplate.application.common.utils.date.DateUtils;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DateUtilsTests extends BaseUnitTest {
+class DateUtilsTests extends BaseUnitTest {
 
     @Test
     void should_parse_local_date_with_default_locale() {
